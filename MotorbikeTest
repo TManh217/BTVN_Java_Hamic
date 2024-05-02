@@ -1,0 +1,95 @@
+import java.util.*;
+
+public class MotorbikeTest
+{
+    public static void inputMotorbike (ArrayList<Motorbike> motorbikes, int n)
+	{
+	   for(int i=0;i<n;i++){
+	    String id = sc.nextLine();
+	    String name = sc.nextLine();
+        String manu = sc.nextLine();
+	    int quantity = Integer.parseInt(sc.nextLine());
+	    double price = Double.parseDouble(sc.nextLine());
+	    double weight = Double.parseDouble(sc.nextLine());
+	    String date = sc.nextLine();
+	    Motorbike tmp = new Motorbike(id,name,manu,quantity,price,weight,date);
+	    motorbikes.add(tmp);
+	   }
+	}
+	public static void outputMotorbike(ArrayList<Motorbike> motorbikes)
+	{
+	    for (int i=0;i<n;i++){
+	        Motorbike k = motobikes.get(i);
+	        k.printMotorbike();
+	    }
+		
+	}
+	public static ArrayList<Motorbike> search (String manu, ArrayList<Motorbike> motorbikes)
+	{   Arraylist<Motorbike> motors = new Arraylist<Motorbike>();
+		 for (int i=0;i<n;i++){
+	        Motorbike k = motorbikes.get(i);
+	        if (k.getManu().equals(manu)){
+	            motors.add(k);
+	        }
+	        
+	    }
+	    return motors;
+	}
+	public static ArrayList<Motorbike> maxWeight (ArrayList<Motorbike> motorbikes)
+	{   
+	        maxw=-9999;
+	        Arraylist<Motorbike> motors = new Arraylist<Motorbike>();
+		 for (int i=0;i<n;i++){
+	        Motorbike k = motobikes.get(i);
+	        if (k.getWeight() > maxw){
+	            maxw= k.getWeight();
+	        }
+	        
+	    }
+	    for (int i=0;i<n;i++){
+	        Motorbike k = motobikes.get(i);
+	        if (k.getWeight() == maxw){
+	            motors.add(k);
+	        }
+	        
+	    }
+	    return motors;
+	    
+	}
+	public static ArrayList<Motorbike> minQuantity (ArrayList<Motorbike> motorbikes)
+	{
+		 maxw=-9999;
+	        Arraylist<Motorbike> motors = new Arraylist<Motorbike>();
+		 for (int i=0;i<n;i++){
+	        Motorbike k = motobikes.get(i);
+	        if (k.getWeight() < maxw){
+	            maxw= k.getQuantity();
+	        }
+	        
+	    }
+	    for (int i=0;i<n;i++){
+	        Motorbike k = motobikes.get(i);
+	        if (k.getQuantity() == maxw){
+	            motors.add(k);
+	        }
+	        
+	    }
+	    return motors;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		Arraylist<Motorbike> motors = new Arraylist<Motorbike>();
+		motors = inputMotorbike(motors,n);
+		int c = Integer.parseInt(sc.nextLine());
+		if (c == 1){
+		    outputMotorbike(search("Honda",motors));
+		} else if (c == 2) {
+		    outputMotorbike(maxWeight(motors));
+		} else if (c == 3){
+		    outputMotorbike(minQuantity(motors));
+		}
+		
+	}
+}
